@@ -46,18 +46,21 @@ void Monstruos::vida()
         vida = 24 + (rand() % 40);
         ataque = 9;
         defensa = 2;
+        recompensa = 1;
     }
     if (tipo == 2)
     {
         vida = 12 + (rand() % 26);
         ataque = 7;
         defensa = 1;
+        recompensa = 100;
     }
     if (tipo == 3)
     {
         vida = 4 + (rand() % 12);
         ataque = 5;
         defensa = 0;
+        recompensa = 40;
     }
 }
 

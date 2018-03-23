@@ -15,6 +15,7 @@ private:
   int vida;
   int ataque;
   int defensa;
+  int recompensa;
 
 public:
   Monstruos();
