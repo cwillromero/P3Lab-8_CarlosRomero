@@ -14,11 +14,13 @@ Adulto::Adulto()
 Monstruos *Adulto::Ataque(Monstruos *moster)
 {
     moster->setVida(moster->getVida() - 8 + moster->getDefensa());
+    return moster;
 }
 
 Monstruos *Adulto::Defensa(Monstruos *moster)
 {
     vida = vida - moster->getAtaque() + 4;
+    return moster;
 }
 
 Monstruos *Adulto::AtaqueItem(Monstruos *moster)
@@ -38,6 +40,7 @@ Monstruos *Adulto::AtaqueItem(Monstruos *moster)
         moster->setVida(moster->getVida() - 10 + moster->getDefensa());
         vida = vida - 4;
     }
+    return moster;
 }
 
 Adulto::~Adulto()
