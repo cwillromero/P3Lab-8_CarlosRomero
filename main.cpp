@@ -20,6 +20,7 @@ void crearJugador();
 void crearMonster();
 void Eliminar();
 void estado();
+void Pelear();
 
 int main()
 {
@@ -32,6 +33,7 @@ int main()
         {
         case 1:
         {
+            Pelear();
             break;
         }
         case 2:
@@ -167,8 +169,8 @@ void crearMonster()
              << "3- Común" << endl;
         cout << "Escoja el rango : " << endl;
         cin >> tipo;
+        cout << endl;
     }
-    cout << endl;
     mostros.push_back(new Monstruos(nombre, debilidad, tipo));
 }
 
@@ -220,6 +222,7 @@ void estado()
                     cout << "; Rango: "
                          << "Comunes";
                 }
+                cout << "; Vidas: " << mostros[i]->getVida();
                 cout << endl;
             }
             else
@@ -273,6 +276,7 @@ void Eliminar()
                 cout << "; Rango: "
                      << "Comunes";
             }
+            cout << "; Vidas: " << mostros[i]->getVida();
             cout << endl;
         }
         else
@@ -288,4 +292,94 @@ void Eliminar()
         cin >> pos;
     }
     mostros[pos] = new Monstruos("Eliminado", 1, 4);
+}
+
+void Pelear()
+{
+    cout << "----Monstruos----" << endl;
+    for (int i = 0; i < mostros.size(); i++)
+    {
+        string name;
+        name = mostros[i]->getNombre();
+        if (name != "Eliminado")
+        {
+            cout << i << ") " << name << "; ";
+            int x = mostros[i]->getDebilidad();
+            if (x == 1)
+            {
+                cout << "Debilidad: "
+                     << "Bumeran";
+            }
+            if (x == 2)
+            {
+                cout << "Debilidad: "
+                     << "Arco y Flechas";
+            }
+            if (x == 3)
+            {
+                cout << "Debilidad: "
+                     << "Bombas";
+            }
+            int y = mostros[i]->getTipo();
+            if (y == 1)
+            {
+                cout << "; Rango: "
+                     << "Jefe";
+            }
+            if (y == 2)
+            {
+                cout << "; Rango: "
+                     << "Semi-Jefe";
+            }
+            if (y == 3)
+            {
+                cout << "; Rango: "
+                     << "Comunes";
+            }
+            cout << "; Vidas: " << mostros[i]->getVida();
+            cout << endl;
+        }
+        else
+        {
+            cout << i << ") "
+                 << "Eliminado" << endl;
+        }
+    }
+    int pos = -1;
+    while (pos < 0 || pos > mostros.size())
+    {
+        cout << "Ingrese la Posición del Monstruo que desea Atacar: " << endl;
+        cin >> pos;
+    }
+    int tipo = 0;
+    while (tipo < 1 || tipo > 3)
+    {
+        cout << "Escoja el ataque: " << endl
+             << "1- Ataque Normal" << endl
+             << "2- Ataque Item" << endl
+             << "3- Ataque Especial" << endl;
+        cout << "Escoja el rango : " << endl;
+        cin >> tipo;
+        cout << endl;
+    }
+
+    if (tipo == 1)
+    {
+        mostros[pos] = heroe->Ataque(mostros[pos]);
+        cout << "Turno del Monstruo: " << endl;
+        heroe->Defensa(mostros[pos]);
+    }
+
+    if (tipo == 2)
+    {
+        mostros[pos] = heroe->AtaqueItem(mostros[pos]);
+        cout << "Turno del Monstruo: " << endl;
+        heroe->Defensa(mostros[pos]);
+    }
+    if (tipo == 3)
+    {
+        mostros[pos] = heroe->AtaqueEspecial(mostros[pos]);
+        cout << "Turno del Monstruo: " << endl;
+        heroe->Defensa(mostros[pos]);
+    }
 }

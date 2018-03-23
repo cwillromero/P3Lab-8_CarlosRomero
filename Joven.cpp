@@ -17,10 +17,9 @@ Monstruos *Joven::Ataque(Monstruos *moster)
     return moster;
 }
 
-Monstruos *Joven::Defensa(Monstruos *moster)
+void Joven::Defensa(Monstruos *moster)
 {
     vida = vida - moster->getAtaque() + 2;
-    return moster;
 }
 
 Monstruos *Joven::AtaqueItem(Monstruos *moster)
@@ -41,6 +40,10 @@ Monstruos *Joven::AtaqueItem(Monstruos *moster)
         vida = vida - 4;
     }
     return moster;
+}
+
+Monstruos *Joven::AtaqueEspecial(Monstruos *moster)
+{
 }
 
 Joven::~Joven()

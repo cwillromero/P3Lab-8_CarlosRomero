@@ -14,7 +14,8 @@ class Joven : public Heroe
     Joven(string, int, Item*, int, int);
     Monstruos *Ataque(Monstruos *);
     Monstruos *AtaqueItem(Monstruos *);
-    Monstruos *Defensa(Monstruos *);
+    Monstruos *AtaqueEspecial(Monstruos *);
+    void Defensa(Monstruos *);
     ~Joven();
 };
 #endif
