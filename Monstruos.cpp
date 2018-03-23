@@ -33,6 +33,11 @@ int Monstruos::getDebilidad()
     return debilidad;
 }
 
+int Monstruos::getTipo()
+{
+    return tipo;
+}
+
 void Monstruos::setDebilidad(int debilidad)
 {
 

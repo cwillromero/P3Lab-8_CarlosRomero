@@ -23,6 +23,7 @@ public:
   string getNombre();
   void setNombre(string);
   int getDebilidad();
+  int getTipo();
   void setDebilidad(int);
   void Vida();
   ~Monstruos();
