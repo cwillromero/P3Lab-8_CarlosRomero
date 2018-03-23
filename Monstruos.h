@@ -30,6 +30,7 @@ public:
   int getAtaque();
   void setAtaque(int);
   int getTipo();
+  int getRecompensa();
   void setDebilidad(int);
   void Vida();
   ~Monstruos();

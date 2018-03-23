@@ -76,6 +76,11 @@ int Monstruos::getDefensa()
     return defensa;
 }
 
+int Monstruos::getRecompensa()
+{
+    return recompensa;
+}
+
 void Monstruos::Vida()
 {
     if (tipo == 1)

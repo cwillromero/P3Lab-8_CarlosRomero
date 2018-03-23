@@ -74,6 +74,8 @@ int main()
         }
         }
     }
+    cout << "Perdió!!..." << endl;
+    return 0;
 }
 
 int menu()
@@ -381,5 +383,64 @@ void Pelear()
         mostros[pos] = heroe->AtaqueEspecial(mostros[pos]);
         cout << "Turno del Monstruo: " << endl;
         heroe->Defensa(mostros[pos]);
+    }
+
+    cout << "----Estado----" << endl;
+    cout << "Nombre: " << heroe->getNombre() << "; Vidas: " << heroe->getVida() << "; Dinero: " << heroe->getDinero() << endl;
+    cout << "Item: " << heroe->getItem()->getNombre() << "; Jefes Derrotados: " << heroe->getJefes_derrotados() << endl
+         << endl;
+    cout << "----Oponente----" << endl;
+    string name;
+    name = mostros[pos]->getNombre();
+    if (name != "Eliminado")
+    {
+        cout << name << "; ";
+        int x = mostros[pos]->getDebilidad();
+        if (x == 1)
+        {
+            cout << "Debilidad: "
+                 << "Bumeran";
+        }
+        if (x == 2)
+        {
+            cout << "Debilidad: "
+                 << "Arco y Flechas";
+        }
+        if (x == 3)
+        {
+            cout << "Debilidad: "
+                 << "Bombas";
+        }
+        int y = mostros[pos]->getTipo();
+        if (y == 1)
+        {
+            cout << "; Rango: "
+                 << "Jefe";
+        }
+        if (y == 2)
+        {
+            cout << "; Rango: "
+                 << "Semi-Jefe";
+        }
+        if (y == 3)
+        {
+            cout << "; Rango: "
+                 << "Comunes";
+        }
+        cout << "; Vidas: " << mostros[pos]->getVida();
+        cout << endl;
+    }
+
+    if (mostros[pos]->getVida() <= 0)
+    {
+        cout << "El monstruo ha sido derrotado!" << endl;
+        if (mostros[pos]->getRecompensa() > 1)
+        {
+            heroe->setDinero(heroe->getDinero() + mostros[pos]->getRecompensa());
+        }
+        else
+        {
+            heroe->setVida(heroe->getVida() + 1);
+        }
     }
 }

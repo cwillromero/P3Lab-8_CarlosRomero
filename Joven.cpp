@@ -26,18 +26,40 @@ Monstruos *Joven::AtaqueItem(Monstruos *moster)
 {
     if (item->getNombre() == "Bumeran")
     {
-        moster->setVida(moster->getVida() - 5 + moster->getDefensa());
+        if (moster->getDebilidad() == 1)
+        {
+            moster->setVida(moster->getVida() - 10 + moster->getDefensa());
+        }
+        else
+        {
+            moster->setVida(moster->getVida() - 5 + moster->getDefensa());
+        }
     }
 
     if (item->getNombre() == "Arco Y Flechas")
     {
-        moster->setVida(moster->getVida() - 4);
+        if (moster->getDebilidad() == 2)
+        {
+            moster->setVida(moster->getVida() - 8);
+        }
+        else
+        {
+            moster->setVida(moster->getVida() - 4);
+        }
     }
 
     if (item->getNombre() == "Bombas")
     {
-        moster->setVida(moster->getVida() - 10 + moster->getDefensa());
-        vida = vida - 4;
+        if (moster->getDebilidad() == 1)
+        {
+            moster->setVida(moster->getVida() - 20 + moster->getDefensa());
+            vida = vida - 4;
+        }
+        else
+        {
+            moster->setVida(moster->getVida() - 10 + moster->getDefensa());
+            vida = vida - 4;
+        }
     }
     return moster;
 }
