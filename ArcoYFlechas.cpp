@@ -10,7 +10,6 @@ ArcoYFlechas::ArcoYFlechas(int ataque, string nombre, string color) : Item(nombr
 
 ArcoYFlechas::ArcoYFlechas()
 {
-    ataque = 4;
 }
 
 int ArcoYFlechas::getAtaque()
