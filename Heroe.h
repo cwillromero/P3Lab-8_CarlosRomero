@@ -19,7 +19,7 @@ class Heroe
 
   public:
     Heroe();
-    Heroe(string, int, int, int, int);
+    Heroe(string, int, Item*, int, int);
     string getNombre();
     void setNombre(string);
     int getVida();

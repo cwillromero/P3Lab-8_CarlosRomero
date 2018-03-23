@@ -11,7 +11,7 @@ class Joven : public Heroe
 {
   public:
     Joven();
-    Joven(string, int, int, int, int);
+    Joven(string, int, Item*, int, int);
     Monstruos *Ataque(Monstruos *);
     ~Joven();
 };

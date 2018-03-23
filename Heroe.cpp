@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Heroe::Heroe(string nombre, int vida, int item, int jefes_derrotados, int dinero)
+Heroe::Heroe(string nombre, int vida, Item *item, int jefes_derrotados, int dinero)
 {
     this->nombre = nombre;
     this->vida = vida;
@@ -40,12 +40,12 @@ void Heroe::setVida(int vida)
     this->vida = vida;
 }
 
-int Heroe::getItem()
+Item *Heroe::getItem()
 {
     return item;
 }
 
-void Heroe::setItem(int item)
+void Heroe::setItem(Item *item)
 {
 
     this->item = item;

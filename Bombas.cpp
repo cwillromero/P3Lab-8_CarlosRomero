@@ -12,6 +12,8 @@ Bombas::Bombas(int ataque, int danio, string nombre, string color) : Item(nombre
 
 Bombas::Bombas()
 {
+    ataque = 10;
+    danio = 4;
 }
 
 int Bombas::getAtaque()

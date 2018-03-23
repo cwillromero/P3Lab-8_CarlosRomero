@@ -11,7 +11,7 @@ class Adulto : public Heroe
 {
   public:
     Adulto();
-    Adulto(string, int, int, int, int);
+    Adulto(string, int, Item*, int, int);
     Monstruos *Ataque(Monstruos *);
     ~Adulto();
 };
