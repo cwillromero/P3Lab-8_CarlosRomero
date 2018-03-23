@@ -25,7 +25,7 @@ int main()
 {
     crearJugador();
     int opcion = 0;
-    while (heroe->getVida() > 0 && opcion != 8)
+    while (heroe->getVida() > 0 && opcion != 9)
     {
         opcion = menu();
         switch (opcion)
@@ -63,6 +63,10 @@ int main()
         }
         case 8:
         {
+            break;
+        }
+        case 9:
+        {
             heroe->setVida(0);
             break;
         }
@@ -73,7 +77,7 @@ int main()
 int menu()
 {
     int opcion = 0;
-    while (opcion < 1 || opcion > 8)
+    while (opcion < 1 || opcion > 9)
     {
         cout << "--------- Laboratorio #8---------" << endl
              << endl;
@@ -82,9 +86,10 @@ int menu()
         cout << "3- Crear Monstruo" << endl;
         cout << "4- Eliminar Monstruo" << endl;
         cout << "5- Cambiar Item" << endl;
-        cout << "6- Tienda" << endl;
-        cout << "7- Guardar Partida" << endl;
-        cout << "8- Salir" << endl;
+        cout << "6- Adulto - Jove y Viceversa" << endl;
+        cout << "7- Tienda" << endl;
+        cout << "8- Guardar Partida" << endl;
+        cout << "9- Salir" << endl;
         cout << "Escoja: ";
         cin >> opcion;
         if (mostros.size() < 1 && (opcion == 1 || opcion == 5 || opcion == 6))
