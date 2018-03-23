@@ -11,6 +11,7 @@ class Bombas : public Item
 {
   private:
     int ataque;
+    int danio;
 
   public:
     Bombas();

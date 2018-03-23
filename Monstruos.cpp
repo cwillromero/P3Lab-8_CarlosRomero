@@ -10,7 +10,7 @@ Monstruos::Monstruos(string nombre, int debilidad, int tipo)
     this->nombre = nombre;
     this->debilidad = debilidad;
     this->tipo = tipo;
-    vida();
+    Vida();
 }
 
 Monstruos::Monstruos()
@@ -39,7 +39,7 @@ void Monstruos::setDebilidad(int debilidad)
     this->debilidad = debilidad;
 }
 
-void Monstruos::vida()
+void Monstruos::Vida()
 {
     if (tipo == 1)
     {

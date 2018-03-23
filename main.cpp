@@ -10,7 +10,9 @@
 #include <string>
 #include <vector>
 
-Heore *heore;
+using namespace std;
+
+Heroe *heroe;
 vector<Monstruos *> mostros;
 
 int menu();
@@ -19,22 +21,74 @@ void crearJugador();
 int main()
 {
     crearJugador();
-    bool x = true;
-    while (x == true)
+    int opcion = 0;
+    while (heroe->getVida() > 0 && opcion != 7)
     {
-        int opcion = menu();
+        opcion = menu();
+        switch (opcion)
+        {
+        case 1:
+        {
+            break;
+        }
+        case 2:
+        {
+            break;
+        }
+        case 3:
+        {
+            break;
+        }
+        case 4:
+        {
+            break;
+        }
+        case 5:
+        {
+            break;
+        }
+        case 6:
+        {
+            break;
+        }
+        case 7:
+        {
+            heroe->setVida(0);
+            break;
+        }
+        }
     }
 }
 
 int menu()
 {
-    int opcion = 1;
+    int opcion = 0;
+    while (opcion < 1 || opcion > 7)
+    {
+        cout << "--------- Laboratorio #8---------" << endl
+             << endl;
+        cout << "1- Pelear con Monstruo" << endl;
+        cout << "2- Ver Estado" << endl;
+        cout << "3- Crear Monstruo" << endl;
+        cout << "4- Cambiar Item" << endl;
+        cout << "5- Tienda" << endl;
+        cout << "6- Guardar Partida" << endl;
+        cout << "7- Salir" << endl;
+        cout << "Escoja: ";
+        cin >> opcion;
+        if (mostros.size() < 1 && (opcion == 1 || opcion == 5 || opcion == 6))
+        {
+            cout << "Debe crear Monstruos Primero!. " << endl;
+            opcion = 0;
+        }
+        cout << endl;
+    }
+    return opcion;
 }
 
 void crearJugador()
 {
     string nombre;
-    int vida;
     Item *item;
     int jefes_derrotados;
     int dinero;
@@ -43,9 +97,9 @@ void crearJugador()
     cout << "Ingrese el Nombre del Heroe: ";
     cin >> nombre;
     cout << endl;
-    vida = 12;
+    int vida = 12;
     int opcion = 0;
-    while (opcion < 1 && opcion > 3)
+    while (opcion < 1 || opcion > 3)
     {
         cout << "Items: " << endl
              << "1- Bumeran." << endl
@@ -66,4 +120,7 @@ void crearJugador()
     {
         item = new Bombas(10, 4, "Bombas", "Verde");
     }
+    jefes_derrotados = 0;
+    dinero = 0;
+    heroe = new Joven(nombre, vida, item, jefes_derrotados, dinero);
 }

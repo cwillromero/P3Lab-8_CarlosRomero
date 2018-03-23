@@ -24,7 +24,7 @@ public:
   void setNombre(string);
   int getDebilidad();
   void setDebilidad(int);
-  void vida();
+  void Vida();
   ~Monstruos();
 };
 #endif
