@@ -11,9 +11,30 @@ Adulto::Adulto()
 {
 }
 
-Monstruos *Adulto::Ataque(Monstruos *)
+Monstruos *Adulto::Ataque(Monstruos *moster)
+{
+    if (moster->getTipo() == 1)
+    {
+        moster->setVida(moster->getVida() - 8 + moster->getDefensa());
+    }
+    if (moster->getTipo() == 2)
+    {
+        moster->setVida(moster->getVida() - 8 + moster->getDefensa());
+    }
+    if (moster->getTipo() == 3)
+    {
+        moster->setVida(moster->getVida() - 8 + moster->getDefensa());
+    }
+}
+
+Monstruos *Adulto::Defensa(Monstruos *)
 {
 }
+
+Monstruos *Adulto::AtaqueItem(Monstruos *)
+{
+}
+
 
 Adulto::~Adulto()
 {

@@ -23,6 +23,12 @@ public:
   string getNombre();
   void setNombre(string);
   int getDebilidad();
+  int getVida();
+  void setVida(int);
+  int getDefensa();
+  void setDefensa(int);
+  int getAtaque();
+  void setAtaque(int);
   int getTipo();
   void setDebilidad(int);
   void Vida();

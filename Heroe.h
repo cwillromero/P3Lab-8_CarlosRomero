@@ -10,7 +10,7 @@ using namespace std;
 class Heroe
 {
 
-  private:
+  public:
     string nombre;
     int vida;
     Item *item;
@@ -31,6 +31,8 @@ class Heroe
     int getDinero();
     void setDinero(int);
     virtual Monstruos *Ataque(Monstruos *) = 0;
+    virtual Monstruos *AtaqueItem(Monstruos *) = 0;
+    virtual Monstruos *Defensa(Monstruos *) = 0;
 
     ~Heroe();
 };
