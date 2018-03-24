@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -24,6 +25,7 @@ void Pelear();
 void tienda();
 void cambiarItem();
 void JoveAdultoAdultoJoven();
+void write(ofstream &out);
 
 int main()
 {
@@ -71,6 +73,9 @@ int main()
         }
         case 8:
         {
+            ofstream Data("Data.will", ios::binary);
+            write(Data);
+            Data.close();
             break;
         }
         case 9:
@@ -572,6 +577,30 @@ void JoveAdultoAdultoJoven()
             heroe = new Adulto(name, vida, item, jefes_derrotados, dinero);
             bandera == 2;
             cout << "Eres un adulto ahora" << endl;
+        }
+    }
+}
+
+void write(ofstream &out)
+{
+
+    string name = heroe->getNombre();
+    int vida = heroe->getVida();
+    Item *item = heroe->getItem();
+    int jefes_derrotados = heroe->getJefes_derrotados();
+    int dinero = heroe->getDinero();
+    int size = name.size();
+    out.write(reinterpret_cast<char *>(&size), sizeof(int));
+    out.write(name.data(), size);
+    out.write(reinterpret_cast<char *>(&item), sizeof(int));
+    out.write(reinterpret_cast<char *>(&vida), sizeof(int));
+    out.write(reinterpret_cast<char *>(&jefes_derrotados), sizeof(int));
+    out.write(reinterpret_cast<char *>(&dinero), sizeof(int));
+    if (mostros.size() > 0)
+    {
+        for (int i = 0; i < mostros.size(); i++)
+        {
+            out.write(reinterpret_cast<char *>(&mostros[i]), sizeof(int));
         }
     }
 }
