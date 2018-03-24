@@ -21,6 +21,7 @@ void crearMonster();
 void Eliminar();
 void estado();
 void Pelear();
+void tienda();
 
 int main()
 {
@@ -61,6 +62,7 @@ int main()
         }
         case 7:
         {
+            tienda();
             break;
         }
         case 8:
@@ -96,7 +98,7 @@ int menu()
         cout << "9- Salir" << endl;
         cout << "Escoja: ";
         cin >> opcion;
-        if (mostros.size() < 1 && (opcion == 1 || opcion == 5 || opcion == 6))
+        if (mostros.size() < 1 && (opcion == 1 || opcion == 4))
         {
             cout << "Debe crear Monstruos Primero!. " << endl;
             opcion = 0;
@@ -142,7 +144,7 @@ void crearJugador()
         item = new Bombas(10, 4, "Bombas", "Verde");
     }
     jefes_derrotados = 0;
-    dinero = 0;
+    dinero = 200;
     heroe = new Joven(nombre, vida, item, jefes_derrotados, dinero);
 }
 
@@ -441,6 +443,35 @@ void Pelear()
         else
         {
             heroe->setVida(heroe->getVida() + 1);
+        }
+        heroe->setJefes_derrotados(heroe->getJefes_derrotados() + 1);
+    }
+}
+
+void tienda()
+{
+    int opcion = 0;
+    while (opcion < 1 || opcion > 2)
+    {
+        cout << "-----Tienda-----" << endl;
+        cout << "Desea Comprar Vidas?" << endl;
+        cout << "1- Si" << endl;
+        cout << "2- No" << endl;
+        cin >> opcion;
+    }
+    if (opcion == 1)
+    {
+        if (heroe->getDinero() >= 200)
+        {
+            heroe->setVida(heroe->getVida() + 4);
+            heroe->setDinero(heroe->getDinero() - 200);
+            cout << "Corazón comprado!." << endl;
+            cout << "Dinero Disponible: " << heroe->getDinero() << endl;
+        }
+        else
+        {
+            cout << "No tenes suficiente dinero para comprar vidas" << endl;
+            cout << "Dinero Disponible: " << heroe->getDinero() << endl;
         }
     }
 }
