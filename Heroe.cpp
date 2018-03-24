@@ -47,7 +47,6 @@ Item *Heroe::getItem()
 
 void Heroe::setItem(Item *item)
 {
-
     this->item = item;
 }
 

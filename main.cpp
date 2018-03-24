@@ -14,7 +14,7 @@ using namespace std;
 
 Heroe *heroe;
 vector<Monstruos *> mostros;
-
+int bandera;
 int menu();
 void crearJugador();
 void crearMonster();
@@ -22,6 +22,8 @@ void Eliminar();
 void estado();
 void Pelear();
 void tienda();
+void cambiarItem();
+void JoveAdultoAdultoJoven();
 
 int main()
 {
@@ -54,12 +56,14 @@ int main()
         }
         case 5:
         {
+            cambiarItem();
             break;
         }
         case 6:
-        {
-            break;
-        }
+            JoveAdultoAdultoJoven();
+            {
+                break;
+            }
         case 7:
         {
             tienda();
@@ -131,21 +135,23 @@ void crearJugador()
         cin >> opcion;
         cout << endl;
     }
-    if (opcion = 1)
+    cout << opcion << endl;
+    if (opcion == 1)
     {
         item = new Bumeran(5, "Bumeran", "Rojo");
     }
-    if (opcion = 2)
+    if (opcion == 2)
     {
         item = new ArcoYFlechas(4, "Arco Y Flechas", "Azul");
     }
-    if (opcion = 3)
+    if (opcion == 3)
     {
         item = new Bombas(10, 4, "Bombas", "Verde");
     }
     jefes_derrotados = 0;
     dinero = 200;
     heroe = new Joven(nombre, vida, item, jefes_derrotados, dinero);
+    bandera = 1;
 }
 
 void crearMonster()
@@ -180,9 +186,18 @@ void crearMonster()
 
 void estado()
 {
+    string e;
+    if (bandera == 1)
+    {
+        e = "Joven";
+    }
+    else
+    {
+        e = "Adulto";
+    }
     cout << "----Estado----" << endl;
     cout << "Nombre: " << heroe->getNombre() << "; Vidas: " << heroe->getVida() << "; Dinero: " << heroe->getDinero() << endl;
-    cout << "Item: " << heroe->getItem()->getNombre() << "; Jefes Derrotados: " << heroe->getJefes_derrotados() << endl
+    cout << "Item: " << heroe->getItem()->getNombre() << "; Jefes Derrotados: " << heroe->getJefes_derrotados() << "; Estado: " << e << endl
          << endl;
     if (mostros.size() > 0)
     {
@@ -300,7 +315,8 @@ void Eliminar()
 
 void Pelear()
 {
-    cout << "----Monstruos----" << endl;
+    cout << endl
+         << "----Monstruos----" << endl;
     for (int i = 0; i < mostros.size(); i++)
     {
         string name;
@@ -387,9 +403,18 @@ void Pelear()
         heroe->Defensa(mostros[pos]);
     }
 
+    string e;
+    if (bandera == 1)
+    {
+        e = "Joven";
+    }
+    else
+    {
+        e = "Adulto";
+    }
     cout << "----Estado----" << endl;
     cout << "Nombre: " << heroe->getNombre() << "; Vidas: " << heroe->getVida() << "; Dinero: " << heroe->getDinero() << endl;
-    cout << "Item: " << heroe->getItem()->getNombre() << "; Jefes Derrotados: " << heroe->getJefes_derrotados() << endl
+    cout << "Item: " << heroe->getItem()->getNombre() << "; Jefes Derrotados: " << heroe->getJefes_derrotados() << "; Estado: " << e << endl
          << endl;
     cout << "----Oponente----" << endl;
     string name;
@@ -472,6 +497,81 @@ void tienda()
         {
             cout << "No tenes suficiente dinero para comprar vidas" << endl;
             cout << "Dinero Disponible: " << heroe->getDinero() << endl;
+        }
+    }
+}
+
+void cambiarItem()
+{
+    int opcion = 0;
+    while (opcion < 1 || opcion > 3)
+    {
+        cout << "Items: " << endl
+             << "1- Bumeran." << endl
+             << "2- Arcos y Flechas" << endl
+             << "3- Bombas" << endl;
+        cout << "Escoja Su Item: " << endl;
+        cin >> opcion;
+        cout << endl;
+    }
+    if (opcion == 1)
+    {
+        heroe->setItem(new Bumeran(5, "Bumeran", "Rojo"));
+    }
+    if (opcion == 2)
+    {
+        heroe->setItem(new ArcoYFlechas(4, "Arco Y Flechas", "Azul"));
+    }
+    if (opcion == 3)
+    {
+        heroe->setItem(new Bombas(10, 4, "Bombas", "Verde"));
+    }
+}
+
+void JoveAdultoAdultoJoven()
+{
+    int opcion = 0;
+    while (opcion < 1 || opcion > 2)
+    {
+        cout << "-----Master Sword” -----" << endl;
+        cout << "1- Meterla " << endl;
+        cout << "2- Sacarla" << endl;
+        cin >> opcion;
+    }
+    if (opcion == 1)
+    {
+        if (bandera == 1)
+        {
+            cout << "Ya eras joven!" << endl;
+        }
+        else if (bandera != 1)
+        {
+            string name = heroe->getNombre();
+            int vida = heroe->getVida();
+            Item *item = heroe->getItem();
+            int jefes_derrotados = heroe->getJefes_derrotados();
+            int dinero = heroe->getDinero();
+            heroe = new Joven(name, vida, item, jefes_derrotados, dinero);
+            bandera == 1;
+            cout << "Eres un joven ahora" << endl;
+        }
+    }
+    else
+    {
+        if (heroe->getJefes_derrotados() < 3)
+        {
+            cout << "No tienes el suficiente poder para portar el arma" << endl;
+        }
+        else if (bandera == 1)
+        {
+            string name = heroe->getNombre();
+            int vida = heroe->getVida();
+            Item *item = heroe->getItem();
+            int jefes_derrotados = heroe->getJefes_derrotados();
+            int dinero = heroe->getDinero();
+            heroe = new Adulto(name, vida, item, jefes_derrotados, dinero);
+            bandera == 2;
+            cout << "Eres un adulto ahora" << endl;
         }
     }
 }
